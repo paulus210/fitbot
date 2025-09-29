@@ -1,14 +1,1 @@
-name: Scheduled FitBot run
 
-on:
-  schedule:
-  - cron: '50/5 2 * * 0'
-  - cron: '0-2 3 * * 0'
-  workflow_dispatch:
-  
-jobs:
-  run:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run fitbot
-        run: docker run -e email=${{ secrets.EMAIL }} -e password=${{ secrets.PASSWORD }} -e booking-goals={'\"0\":{\"time\":\"0700\"\,\"name\":\"HYROX-Endurance\"}\,\"1\":{\"time\":\"0800\"\,\"name\":\"HYROX-Endurance\"}\,\"2\":{\"time\":\"0800\"\,\"name\":\"HYROX-Endurance\"},\"3\":{\"time\":\"0000\"\,\"name\":\"HYROX-Endurance\"},\"4\":{\"time\":\"0000\"\,\"name\":\"HYROX-Endurance\"},\"5\":{\"time\":\"0000\"\,\"name\":\"HYROX-Endurance\"}'} -e box-name=hybridboxgrau -e box-id=8244 -e days-in-advance=1 pablobuenaposada/fitbot
